@@ -23,6 +23,46 @@ The input file for make_genotypes.sh is a fasta matrix file from [kSNP](https://
 ## Analysis and Admixture Plots
 See LEA documentation and tutorials for alternative input files format and compatability.
 
-For this example, read the output genotype provided by *make_genotype.sh* using the scripts provided in
+###*Pop_Admixture.R* is currently meant to be used as a series of individual scripts and has not been automated to be a fully executable script, but this is underway
+
+Currently all steps below are also in *Pop_Admixture.R*
+Import the genotype file produced by *make_genotype.sh*
+
+`#run structure analysis
+all.snmf = snmf("all.geno", K = 1:20, ploidy = 1, entropy = T,alpha = 100, project = "new")`
+
+If you've run LEA previously and already have a population structure project:
+
+`#or load project
+project = load.snmfProject("core.snmfProject")`
+
+Next produce stress plots and preliminary visualizations
+
+`#make stress plot(entropy) and pick K
+pdf.('allstress.pdf')
+plot(obj.snmf, col = "blue4", cex = 1.4, pch = 19)
+dev.off()
+#construct ancestry plot and extract order
+
+pdf.('allbar.pdf')
+barchart(obj.snmf, K = 10, border = NA, space = 0,xlab = "Individuals",ylab = "Ancestry proportions",main = "Ancestry matrix")
+dev.off()
+barchart(obj.snmf, K = 10, border = NA, space = 0,xlab = "Individuals",ylab = "Ancestry proportions",main = "Ancestry matrix") -> bp
+bp`
+
+Once you have determined the number of hypothetical ancestors (K) for your data, the admixture bar chart can be customized using the custom function *pop_graphic* after it has been imported into your global environment. This function will also look for the list of file names produced by *make_genotypes.sh*. This is just a tab-delimited list of the sample identifiers in your population in the same order as they appear in your genotype file and can be made outside of *make_genotypes.sh* in a text editor or excel.
+
+*pop_graphic* is used by providing the same of the object from the initial structure analysis and the # of K
+in the example below the structure analysis object is named *core* and *8* K were selected
+
+`pop_graphic(core, 8) -> q_melt
+ggplot(q_melt, aes(x=reorder(sample,axis_order), y=value, fill = variable)) + geom_bar(stat= 'identity', width =1) + scale_fill_brewer(palette = 'Set3') + theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = -0.09, size = 6, color = 'black')) + scale_y_continuous(expand = c(0,0))+ theme(legend.position = "none")
+ggsave('core_k8_6_10.pdf', height = 7, width = 13, un='in')`
+
+Meta data can be easily incorporated into the output graphic as well using by relating the output dataframe from *pop_graphic* to a meta data frame and adding these specifications to the graphic code
+
+So, that's it! I hope some of this helps make your structure analysis and visualizations a little easier!
+
+
 
 
