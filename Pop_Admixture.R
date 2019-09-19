@@ -21,6 +21,7 @@ pop_graphic(core, 8) -> q_melt
 ggplot(q_melt, aes(x=reorder(sample,axis_order), y=value, fill = variable)) + geom_bar(stat= 'identity', width =1) + scale_fill_brewer(palette = 'Set3') + theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = -0.09, size = 6, color = 'black')) + scale_y_continuous(expand = c(0,0))+ theme(legend.position = "none")
 ggsave('core_k8_6_10.pdf', height = 7, width = 13, un='in') 
 
+#Custom Function
 pop_graphic <- function(obj,x){
   library(RColorBrewer)
   library(reshape2)
