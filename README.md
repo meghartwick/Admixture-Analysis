@@ -64,8 +64,9 @@ bp
 
 Once you have determined the number of hypothetical ancestors (K) for your data, the admixture bar chart can be customized using the custom function `pop_graphic` after it has been imported into your global environment. This function will also look for the list of file names produced by `make_genotypes.sh`. This is just a tab-delimited list of the sample identifiers in your population in the same order as they appear in your genotype file. It can be made outside of `make_genotypes.sh` in a text editor or excel, or remove it from the function if you don't want to use identifiers.
 
-`pop_graphic` is used by providing the name of the object from the initial structure analysis and the # of K
-in the example below the structure analysis object is named *core* and *8* K were selected
+`pop_graphic` is used by providing the name of the object from the initial structure analysis and the # of K.
+
+In the example below, the structure analysis object is named *core* and *8* K were selected
 
 ```
 pop_graphic(core, 8) -> q_melt
@@ -75,5 +76,5 @@ ggsave('core_k8_6_10.pdf', height = 7, width = 13, un='in')
 ```
 Meta data can be easily incorporated into the output graphic by relating the output dataframe from `pop_graphic` to a meta data frame and adding these specifications to the graphics code
 
-## So, that's it! I hope some of this helps make your structure analysis and visualizations a little easier!
+### So, that's it! I hope some of this helps make your structure analysis and visualizations a little easier!
 
