@@ -1,7 +1,7 @@
 library(LEA)
 library(ggplot)
 #run structure analysis
-all.snmf = snmf("all.geno", K = 1:20, ploidy = 1, entropy = T,alpha = 100, project = "new")
+obj.snmf = snmf("all.geno", K = 1:20, ploidy = 1, entropy = T,alpha = 100, project = "new")
 
 #or load project
 project = load.snmfProject("core.snmfProject")
