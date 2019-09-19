@@ -32,7 +32,9 @@ See LEA documentation and tutorials for alternative input files format and compa
 
 Currently all steps below are also in `Pop_Admixture.R`
 
-Import the genotype file produced by `make_genotype.sh`
+Import and analyze the genotype file produced by `make_genotype.sh`
+
+*(if you have a lot of variation and/or lots of samples this could be memory and time intense, consider smaller K or a job manager if that's an option)*
 
 ```
 #run structure analysis
