@@ -1,6 +1,8 @@
 # Population-Analysis
 A pipeline to produce population admixture analysis and visualizations
 
+![alt text](https://github.com/meghartwick/Population-Analysis/blob/master/pop.tif)
+
 # Introduction 
 Population Admixture Plots help us visualize relationships between organisms by applying structure to genetic variation as it may have been contributed by hypothetical ancestors (see: coalescence)
 
