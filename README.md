@@ -12,7 +12,7 @@ This pipeline creates the input file for STRUCTURE-like analysis by the [R packa
 The genotype file is analyzed for population structure using [LEA](https://www.rdocumentation.org/packages/LEA/versions/1.4.0) `snmf`.
 A stress plot can be produced for selecting K and a custom function `pop_graphic` integrates the LEA `barplot` function with [ggplot2](https://ggplot2.tidyverse.org/) to allow for customization and incorporation of meta data layers.
 
-Many great tutorials for LEA are available including [ this resource ](http://membres-timc.imag.fr/Olivier.Francois/LEA/tutorial.htm) if you would like to explore your data beyond the scripts provided here 
+Many great tutorials for LEA are available, including [ this resource ](http://membres-timc.imag.fr/Olivier.Francois/LEA/tutorial.htm), if you would like to explore your data beyond the scripts provided here 
 
 # Usage
 This pipeline is currently coded for a shared computing environment between collaborators, some adjustments to the script may be necessary 
