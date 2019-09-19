@@ -25,7 +25,7 @@ sh make_genotype.sh <name>
 ## Analysis and Admixture Plots
 See LEA documentation and tutorials for alternative input files format and compatability.
 
-###*Pop_Admixture.R* is currently meant to be used as a series of individual scripts and has not been automated to be a fully executable script, but this is underway
+### *Pop_Admixture.R* is currently meant to be used as a series of individual scripts and has not been automated to be a fully executable script, but this is in progress...
 
 Currently all steps below are also in *Pop_Admixture.R*
 Import the genotype file produced by *make_genotype.sh*
