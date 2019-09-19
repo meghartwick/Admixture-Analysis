@@ -11,7 +11,7 @@ A stress plot can be produced for selecting K and a custom function *pop_functio
 
 Many great tutorials for LEA are available including [ this resource ](http://membres-timc.imag.fr/Olivier.Francois/LEA/tutorial.htm) if you would like to explore your data beyond the scripts provided here 
 
-#Usage
+# Usage
 This pipeline is currently coded for a shared computing environment between collaborators, some adjustments to the script may be necessary 
 ## Input File
 make_genotypes.sh uses [snp-sites](https://github.com/sanger-pathogens/snp-sites) and [bcftools](https://samtools.github.io/bcftools/bcftools.html). 
