@@ -7,7 +7,7 @@ Population Admixture Plots help us visualize relationships between organisms by 
 There are a number of great programs available for Population structure analysis.
 This pipeline creates the input file for STRUCTURE-like analysis by the [R package LEA](https://www.rdocumentation.org/packages/LEA/versions/1.4.0). The *make_genotypes.sh* script produces a split vcf file, a genotype file and an ordered list of sample names.
 The genotype file is analyzed for population structure using [LEA](https://www.rdocumentation.org/packages/LEA/versions/1.4.0) *snmf*.
-A stress plot be produced for selecting K and a custom function *pop_function* integrates the LEA *barplot* function with [ggplot2](https://ggplot2.tidyverse.org/) to allow for customization and incorporation of meta data layers.
+A stress plot can be produced for selecting K and a custom function *pop_function* integrates the LEA *barplot* function with [ggplot2](https://ggplot2.tidyverse.org/) to allow for customization and incorporation of meta data layers.
 
 Many great tutorials for LEA are available including [ this resource ](http://membres-timc.imag.fr/Olivier.Francois/LEA/tutorial.htm) if you would like to explore your data beyond the scripts provided here 
 
