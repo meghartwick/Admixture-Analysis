@@ -5,7 +5,7 @@ A pipeline to produce population admixture analysis and visualizations
 Population Admixture Plots help us visualize relationships between organisms by applying structure to genetic variation as it may have been contributed by hypothetical ancestors (see: coalescence)
 
 There are a number of great programs available for Population structure analysis.
-This pipeline creates the input file for STRUCTURE-like analysis by the [R package LEA](https://www.rdocumentation.org/packages/LEA/versions/1.4.0). The *make_genotypes.sh* script produces a split vcf file, a genotype file and an ordered list of sample names. \n
+This pipeline creates the input file for STRUCTURE-like analysis by the [R package LEA](https://www.rdocumentation.org/packages/LEA/versions/1.4.0). The *make_genotypes.sh* script produces a split vcf file, a genotype file and an ordered list of sample names.
 The genotype file is analyzed for population structure using [LEA](https://www.rdocumentation.org/packages/LEA/versions/1.4.0) *snmf*.
 A stress plot be produced for selecting K and a custom function *pop_function* integrates the LEA *barplot* function with [ggplot2](https://ggplot2.tidyverse.org/) to allow for customization and incorporation of meta data layers.
 
@@ -18,7 +18,7 @@ make_genotypes.sh uses [snp-sites](https://github.com/sanger-pathogens/snp-sites
 
 The input file for make_genotypes.sh is a fasta matrix file from [kSNP](https://sourceforge.net/projects/ksnp/). The way this script is written it should be the only fasta file inthe folder, otherwise modify the script to hard code the file name. Provide the *make_genotype.sh* with the name that you like assigned to your output files. If you already have a VCF then modify make_genotypes.sh by eliminating lines 3-10. 
 
-`sh make_genotype.sh <name>`
+```sh make_genotype.sh <name>```
 
 ## Analysis and Admixture Plots
 See LEA documentation and tutorials for alternative input files format and compatability.
@@ -28,17 +28,22 @@ See LEA documentation and tutorials for alternative input files format and compa
 Currently all steps below are also in *Pop_Admixture.R*
 Import the genotype file produced by *make_genotype.sh*
 
-`#run structure analysis
-all.snmf = snmf("all.geno", K = 1:20, ploidy = 1, entropy = T,alpha = 100, project = "new")`
+```
+#run structure analysis
+all.snmf = snmf("all.geno", K = 1:20, ploidy = 1, entropy = T,alpha = 100, project = "new")
+```
 
 If you've run LEA previously and already have a population structure project:
 
-`#or load project
-project = load.snmfProject("core.snmfProject")`
+```
+#or load project
+project = load.snmfProject("core.snmfProject")
+```
 
 Next produce stress plots and preliminary visualizations
 
-`#make stress plot(entropy) and pick K
+```
+#make stress plot(entropy) and pick K
 pdf.('allstress.pdf')
 plot(obj.snmf, col = "blue4", cex = 1.4, pch = 19)
 dev.off()
@@ -48,20 +53,24 @@ pdf.('allbar.pdf')
 barchart(obj.snmf, K = 10, border = NA, space = 0,xlab = "Individuals",ylab = "Ancestry proportions",main = "Ancestry matrix")
 dev.off()
 barchart(obj.snmf, K = 10, border = NA, space = 0,xlab = "Individuals",ylab = "Ancestry proportions",main = "Ancestry matrix") -> bp
-bp`
+bp
+```
 
-Once you have determined the number of hypothetical ancestors (K) for your data, the admixture bar chart can be customized using the custom function *pop_graphic* after it has been imported into your global environment. This function will also look for the list of file names produced by *make_genotypes.sh*. This is just a tab-delimited list of the sample identifiers in your population in the same order as they appear in your genotype file and can be made outside of *make_genotypes.sh* in a text editor or excel.
+Once you have determined the number of hypothetical ancestors (K) for your data, the admixture bar chart can be customized using the custom function *pop_graphic* after it has been imported into your global environment. This function will also look for the list of file names produced by *make_genotypes.sh*. This is just a tab-delimited list of the sample identifiers in your population in the same order as they appear in your genotype file and can be made outside of *make_genotypes.sh* in a text editor or excel or removve it from the function if you don't want to use identifiers.
 
-*pop_graphic* is used by providing the same of the object from the initial structure analysis and the # of K
+*pop_graphic* is used by providing the name of the object from the initial structure analysis and the # of K
 in the example below the structure analysis object is named *core* and *8* K were selected
 
-`pop_graphic(core, 8) -> q_melt
+```
+pop_graphic(core, 8) -> q_melt
 ggplot(q_melt, aes(x=reorder(sample,axis_order), y=value, fill = variable)) + geom_bar(stat= 'identity', width =1) + scale_fill_brewer(palette = 'Set3') + theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = -0.09, size = 6, color = 'black')) + scale_y_continuous(expand = c(0,0))+ theme(legend.position = "none")
-ggsave('core_k8_6_10.pdf', height = 7, width = 13, un='in')`
+ggsave('core_k8_6_10.pdf', height = 7, width = 13, un='in')
+
+````
 
 Meta data can be easily incorporated into the output graphic as well using by relating the output dataframe from *pop_graphic* to a meta data frame and adding these specifications to the graphic code
 
-So, that's it! I hope some of this helps make your structure analysis and visualizations a little easier!
+##So, that's it! I hope some of this helps make your structure analysis and visualizations a little easier!
 
 
 
