@@ -28,7 +28,7 @@ sh make_genotype.sh <name>
 ## Analysis and Admixture Plots
 See LEA documentation and tutorials for alternative input file formats and compatability.
 
- `_Pop_Admixture.R_` *is currently used as a series of individual scripts and has not been automated to be a fully executable script, but this is in progress...*
+ `Pop_Admixture.R` *is currently used as a series of individual scripts and has not been automated to be a fully executable script, but this is in progress...*
 
 Currently all steps below are also in `Pop_Admixture.R`
 
@@ -78,5 +78,5 @@ ggsave('core_k8_6_10.pdf', height = 7, width = 13, un='in')
 ```
 Meta data can be easily incorporated into the output graphic by relating the output dataframe from `pop_graphic` to a meta data frame and adding these specifications to the graphics code
 
-### So, that's it! I hope some of this helps make your structure analysis and visualizations a little easier!
+**So, that's it, I hope some of this helps make your structure analysis and visualizations a little easier!**
 
