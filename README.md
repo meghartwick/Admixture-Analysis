@@ -38,14 +38,14 @@ Import and analyze the genotype file produced by `make_genotype.sh`
 
 ```
 #run structure analysis
-all.snmf = snmf("all.geno", K = 1:20, ploidy = 1, entropy = T,alpha = 100, project = "new")
+all.snmf <- snmf("all.geno", K = 1:20, ploidy = 1, entropy = T,alpha = 100, project = "new")
 ```
 
 If you've run LEA previously and already have a population structure project:
 
 ```
 #or load project
-project = load.snmfProject("core.snmfProject")
+project <- load.snmfProject("core.snmfProject")
 ```
 
 Next produce stress plots and preliminary visualizations
