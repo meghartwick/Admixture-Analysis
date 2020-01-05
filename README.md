@@ -1,4 +1,4 @@
-# Population-Analysis
+# Admixture-Analysis
 A pipeline to produce population admixture analysis and visualizations
 
 ![alt text](https://github.com/meghartwick/Population-Analysis/blob/master/pop.jpg)
